@@ -32,15 +32,12 @@ describe('Test queries', () => {
       expect(testId).toBeGreaterThan(0);
       expect(beforePostResults + 1).toEqual(afterPostResults);
     }
-    return true;
   });
 
   test('put', async () => {
     if (process.env.DB_NAME && process.env.DB_USER && process.env.DB_PASSWORD) {
       const replaceId = await replace(updatedTest);
       expect(testId).toEqual(replaceId);
-    } else {
-      return true;
     }
   });
 
@@ -49,8 +46,6 @@ describe('Test queries', () => {
       const [result] = await getById(testId);
       expect(updatedTest.id).toEqual(result.id);
       expect(updatedTest.text).toEqual(result.text);
-    } else {
-      return true;
     }
   });
 
@@ -58,8 +53,6 @@ describe('Test queries', () => {
     if (process.env.DB_NAME && process.env.DB_USER && process.env.DB_PASSWORD) {
       const deletedId = await deleteById(testId);
       expect(testId).toEqual(deletedId);
-    } else {
-      return true;
     }
   });
 });
